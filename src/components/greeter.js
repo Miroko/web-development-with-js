@@ -5,7 +5,7 @@ const Greeter = React.createClass({
       const { name } = this.props.params;
       return (
         <h1>
-          Hello {name}
+          Greetings {name}
         </h1>
       )
     }

@@ -1,11 +1,6 @@
 import React from 'react';
 
 const DataDisplay = React.createClass({
-      getInitialState: function() {
-          return {
-              dataFromServer: []
-          };
-      },
       render: function() {
           const dataFromServer = this.props.dataFromServer;
 

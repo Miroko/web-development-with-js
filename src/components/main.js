@@ -11,9 +11,6 @@ const MainApp = React.createClass({
           };
       },
       render: function() {
-          const namesFromServer = this.state.namesFromServer;
-          const dataFromServer = this.state.dataFromServer;
-
           return (
               <div>
                 <h1>
@@ -22,12 +19,12 @@ const MainApp = React.createClass({
                 <h1>
                   <Link to="/data">Data</Link>
                 </h1>
-                {namesFromServer.map((name, key) =>
-                  <li>
-                    <Link key={key} to={`/hello/${name}`}>{name}</Link>
-                  </li>)}
+                <h1>
+                  <Link to="/names">Names</Link>
+                </h1>
                 {this.props.children && React.cloneElement(this.props.children, {
-                    dataFromServer: dataFromServer
+                    namesFromServer:  this.state.namesFromServer,
+                    dataFromServer: this.state.dataFromServer
                 })}
               </div>
           );
