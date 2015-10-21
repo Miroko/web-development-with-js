@@ -16,15 +16,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('/api/tussi', function(req, res, next) {
-
+app.get('/api/data', function(req, res, next) {
     res.send([
-        'tussi',
-        'tussi2',
-        'tussi3',
-        'tussi4',
+        'a',
+        'b',
+        'c',
+        'd',
     ]);
-
 });
 
 app.get('*', function(req, res, next) {
@@ -40,5 +38,3 @@ app.listen(port, 'localhost', function(err) {
 
   console.log('Listening at http://localhost:' + port);
 });
-
-
