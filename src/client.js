@@ -14,6 +14,59 @@ function getServerData(){
   });
 }
 
+function getServerNames(){
+  return axios.get('/api/names')
+  .then((response) => {
+    return response.data;
+  });
+}
+
+const MainApp = React.createClass({
+      getInitialState: function() {
+          return {
+              namesFromServer: []
+          };
+      },
+      render: function() {
+          const namesFromServer = this.state.namesFromServer;
+
+          return (
+              <div>
+                <h1>
+                  <Link to="/counter">Counter</Link>
+                </h1>
+                <h1>
+                  <Link to="/data">Data</Link>
+                </h1>
+                {namesFromServer.map((name, key) =>
+                  <li>
+                    <Link key={key} to={`/hello/${name}`}>{name}</Link>
+                  </li>)}
+                {this.props.children}
+              </div>
+          );
+      },
+
+      componentDidMount: function(){
+          getServerNames().then(data => {
+            this.setState({
+                namesFromServer: data
+            })
+          })
+      }
+})
+
+const Greeter = React.createClass({
+    render: function(){
+      const { name } = this.props.params;
+      return (
+        <h1>
+          Hello {name}
+        </h1>
+      )
+    }
+});
+
 const DataFromServerApp = React.createClass({
       getInitialState: function() {
           return {
@@ -25,7 +78,6 @@ const DataFromServerApp = React.createClass({
 
           return (
               <div>
-                <li><Link to="/">Main</Link></li>
                 <h1>
                 {dataFromServer.map((data, key) =>
                   <ServerData key={key} data={data}/>)}
@@ -73,7 +125,6 @@ const CounterApp = React.createClass({
     render: function() {
         return (
             <div>
-                <li><Link to="/data">Data</Link></li>
                 <h1>Counter1
                 <Counterizer
                     count={this.state.count}
@@ -105,8 +156,11 @@ const Counterizer = React.createClass({
 
 const routes = (
   <Router>
-    <Route path="/" component={CounterApp}/>
-    <Route path="data" component={DataFromServerApp} />
+    <Route path="/" component={MainApp}>
+      <Route path="/hello/:name" component={Greeter} />
+      <Route path="/counter" component={CounterApp} />
+      <Route path="/data" component={DataFromServerApp} />
+    </Route>
   </Router>
 );
 

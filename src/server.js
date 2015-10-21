@@ -18,10 +18,19 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('/api/data', function(req, res, next) {
     res.send([
-        'a',
-        'b',
-        'c',
-        'd',
+        'data1',
+        'data2',
+        'data3',
+        'data4',
+    ]);
+});
+
+app.get('/api/names', function(req, res, next) {
+    res.send([
+        'name1',
+        'name2',
+        'name3',
+        'name4',
     ]);
 });
 
