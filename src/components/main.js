@@ -1,20 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router'
 
-function getServerNames(){
-  return axios.get('/api/names')
-  .then((response) => {
-    return response.data;
-  });
-}
-
-function getServerData(){
-  return axios.get('/api/data')
-  .then((response) => {
-    return response.data;
-  });
-}
+import Api from '../api'
 
 const MainApp = React.createClass({
       getInitialState: function() {
@@ -47,12 +34,12 @@ const MainApp = React.createClass({
       },
 
       componentDidMount: function(){
-          getServerNames().then(data => {
+          Api.getServerNames().then(data => {
             this.setState({
                 namesFromServer: data
             })
           }),
-          getServerData().then(data => {
+          Api.getServerData().then(data => {
             this.setState({
                 dataFromServer: data
             })
