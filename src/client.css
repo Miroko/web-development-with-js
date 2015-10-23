@@ -1,6 +1,4 @@
 
-.counterButton {
-  button{    
-    margin-left: 10px;
-  }
+textarea{
+  resize: vertical;
 }
