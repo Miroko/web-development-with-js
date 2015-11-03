@@ -1,17 +1,19 @@
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './client.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router'
-
-import TodoApp from './components/todoApp'
-
+import { Router, Route } from 'react-router'
 import { createHistory } from 'history';
-let history = createHistory();
+
+import Main from './components/main'
+import TodoApp from './components/todo-app'
+
+const history = createHistory();
 
 const routes = (
   <Router history={history}>
-    <Route path="/" component={TodoApp}/>
+    <Route path="/:boardId" component={TodoApp}>
+    </Route>
   </Router>
 );
 

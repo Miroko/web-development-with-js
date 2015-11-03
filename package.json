@@ -9,7 +9,7 @@
     "build": "npm run clean && npm run build:webpack",
     "lint": "eslint src",
     "babel-node": "babel-node --stage=0",
-    "start": "NODE_ENV=development nodemon --exec npm run babel-node -w src/server.js -- src/server.js"
+    "start": "NODE_ENV=production nodemon --exec npm run babel-node -w src/server.js -- src/server.js"
   },
   "repository": {
     "type": "git",
@@ -30,13 +30,13 @@
     "babel-plugin-react-transform": "^1.1.1",
     "babel-runtime": "^5.8.25",
     "bluebird": "^2.10.2",
+    "body-parser": "^1.14.1",
     "classnames": "^2.1.5",
     "css-loader": "^0.19.0",
     "eslint": "^1.6.0",
     "eslint-loader": "^1.1.0",
     "eslint-plugin-react": "^3.5.1",
     "express": "^4.13.3",
-    "body-parser": "^1.14.1",
     "fbjs": "^0.3.1",
     "file-loader": "^0.8.4",
     "history": "^1.12.5",
